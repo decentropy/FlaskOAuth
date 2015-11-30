@@ -3,6 +3,7 @@ Using Flask and RAuth to support authenticating via Twitter, Google, Facebook, G
 
 Register for API keys at each service, and add to your flask config, e.g. (below are fake)
 
+```
 OAUTH_CREDENTIALS = {
     'facebook': {
         'id': '104735435285335',
@@ -30,19 +31,24 @@ OAUTH_CREDENTIALS = {
         'useragent': 'yourwebsite.com by /u/yourname'
     }
 }
+```
 
 To login, route in flask with the service provider name, e.g.:
 
+```
 @app.route('/authorize/<provider>')
 def oauth_authorize(provider):      #oauth start
     oauth = OAuthSignIn.get_provider(provider)
     session['state'] = oauth.state
     session['next'] = request.args.get('next', '')
     return oauth.authorize()
+```
 
 Below will be returned upon successful authorization:
 
+```
 @app.route('/callback/<provider>')
 def oauth_callback(provider):       #oauth callback
     oauth = OAuthSignIn.get_provider(provider)
     social_id, username, email, url, jsonme = oauth.callback()
+```
