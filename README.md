@@ -1,5 +1,5 @@
 # FlaskOAuth
-Using Flask and RAuth to support authenticating via Twitter, Google, Facebook, Github, LinkedIn, and Reddit
+Using Flask and RAuth to support authenticating via Twitter, Google, Facebook, Github, LinkedIn, and Reddit. Includes managing a state token to prevent CSRF attacks.
 
 Register for API keys at each service, and add to your flask config, e.g. (below are fake)
 
